@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import "tailwindcss";
+
+
+@theme {
+  --font-inter: "Inter", sans serif;
+  --color-background: #000000;
+  --color-foreground: #FFFFFF;
+}
+
+
+/* Animações */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeBlurUp {
+  from {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes logoFadeBlur {
+  from {
+    opacity: 0;
+    filter: blur(20px) brightness(0.5);
+    transform: scale(0.8);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0) brightness(1);
+    transform: scale(1);
+  }
+}
+
+@keyframes glow-pulse {
+
+  0%,
+  100% {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.05),
+      0 0 20px rgba(255, 255, 255, 0.03),
+      0 0 30px rgba(255, 255, 255, 0.02);
+  }
+
+  50% {
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.08),
+      0 0 25px rgba(255, 255, 255, 0.05),
+      0 0 35px rgba(255, 255, 255, 0.03);
+  }
+}
+
+/* Classes de animação */
+.animate-greeting {
+  opacity: 0;
+  animation: fadeBlurUp 0.8s ease-out 0.5s forwards;
+}
+
+.animate-name {
+  opacity: 0;
+  animation: fade-in 0.8s ease-out 1.25s forwards, glow-pulse 3s ease-in-out 1.25s infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out both;
+}
+
+.animate-subtitle {
+  opacity: 0;
+  animation: fadeBlurUp 0.8s ease-out 2s forwards;
+}
+
+.animate-button {
+  opacity: 0;
+  animation: fadeBlurUp 0.8s ease-out 2.75s forwards;
+}
+
+.animate-logo {
+  opacity: 0;
+  animation: logoFadeBlur 0.8s ease-out 3.5s forwards;
+}
+
+.glow-text {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* Page Transitions */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.5s;
+}
+
+::view-transition-old(root) {
+  animation-name: fade-out-scale;
+}
+
+::view-transition-new(root) {
+  animation-name: fade-in-scale;
+}
+
+@keyframes fade-out-scale {
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+@keyframes fade-in-scale {
+  from {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+}

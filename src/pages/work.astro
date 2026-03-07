@@ -1,0 +1,119 @@
+---
+import ProjectCard from "../components/ProjectCard.astro";
+import Button from "../components/ui/Button.astro";
+import BottomNav from "../components/BottomNav.astro";
+
+const projects = [
+  {
+    name: "Lunai",
+    description: "An open-source ecosystem with tools to help with your daily life and personal and physical development. Built with Golang, Typescript, and PostgreSQL.",
+    technologies: ["Golang", "TypeScript", "PostgreSQL"],
+    githubUrl: "https://github.com/lunai-monster",
+    liveUrl: "https://www.lunai.monster",
+    featured: true
+  },
+  {
+    name: "Car Ja E-commerce",
+    description: "FullStack e-commerce platform for car parts with microservices payment gateway and RAG integration.",
+    technologies: ["Golang", "NextJs", "Microservices"],
+    featured: true,
+    liveUrl: "https://carja.com.br" 
+    },
+  {
+    name: "Instagram Unfollowers",
+    description: "A browser-based tool to identify users who don't follow you back on Instagram. Features whitelist system, export/import functionality, and customizable timing settings.",
+    technologies: ["TypeScript", "Instagram API", "React"],
+    githubUrl: "https://github.com/davidarroyo1234/InstagramUnfollowers",
+    liveUrl: "https://davidarroyo1234.github.io/InstagramUnfollowers/",
+    contributed: true
+  },
+  {
+    name: "ServeCommand Project",
+    description: "Corporate team and task administration platform with slash commands and activity registration flow.",
+    technologies: ["Drizzle", "PostgreSQL", "NextJs", "Local-First"],
+    liveUrl: "https://www.servecommand.com/",
+    contributed: true
+  },
+  {
+    name: "Direção Positiva",
+    description: "Full-Stack application for driving instructors and students with Google Maps API integration.",
+    technologies: ["React", "Golang", "Google Maps API"],
+    liveUrl: "https://direcaopositiva.com",
+  }
+];
+---
+
+<html lang="en" transition:animate="fade">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="stylesheet" href="/src/styles/globals.css" />
+    <title>Work - Gustavo Luna</title>
+  </head>
+  <body class="bg-background text-foreground font-inter">
+    <div id="app">
+      <div class="container mx-auto px-4 py-16 max-w-7xl">
+        <!-- Header -->
+        <div class="text-center mb-16 animate-fade-in">
+          <h1 class="text-5xl md:text-7xl font-bold mb-4 glow-text">
+            My Work
+          </h1>
+          <p class="text-xl text-zinc-400 mb-8">
+            Some projects I've built and contributed to
+          </p>
+          <a 
+            href="https://github.com/xyztavo" 
+            target="_blank" 
+            class="inline-flex items-center gap-2 text-zinc-400 hover:text-white transition-colors"
+          >
+            View full GitHub profile →
+          </a>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+          {projects.map((project, index) => (
+            <div 
+              class="animate-project-card"
+              style={`animation-delay: ${index * 0.1}s`}
+            >
+              <ProjectCard {...project} />
+            </div>
+          ))}
+        </div>
+
+        <!-- CTA to Experiences -->
+        <div class="text-center animate-fade-in mt-20">
+          <p class="text-zinc-400 mb-6 text-lg">
+            Want to know more about my journey?
+          </p>
+          <Button href="/experiences">
+            View My Experience Timeline
+          </Button>
+        </div>
+      </div>
+    </div>
+    <BottomNav currentPage="work" />
+  </body>
+</html>
+
+<style>
+  .animate-project-card {
+    opacity: 0;
+    animation: fadeSlideUp 0.6s ease-out forwards;
+  }
+
+  @keyframes fadeSlideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
