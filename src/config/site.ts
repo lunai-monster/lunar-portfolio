@@ -142,7 +142,7 @@ export const siteConfig = {
       title: "Direção Positiva",
       description: "Full-Stack application for driving instructors and students with Google Maps API integration.",
       tags: ["React", "Golang", "Google Maps API"],
-      liveUrl: "https://direcaopositiva.com.br",
+      liveUrl: "https://direcaopositiva.com",
       contributed: true,
     },
   ],
